@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Papsdadee-o | Soft Workshop Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --paper: #fbfaf6;
+    --slate: #5f6a68;
+    --slate-deep: #3f4a48;
+    --sage: #7d8b78;
+    --sage-soft: #e4e8df;
+    --mid: #d9ddd4;
+    --text: #2c3331;
+    --muted: #66706c;
+    --brass: #a8844f;
+    --brass-soft: #c4a36d;
+    --line: #d5d8d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Manrope", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--slate-deep); text-decoration: none; }
+  a:hover { color: var(--brass); }
+  .wrap { width: min(1160px, 92vw); margin: 0 auto; }
+  .eyebrow {
+    font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--brass); font-weight: 700; margin-bottom: 0.75rem;
+  }
+  .note {
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #8b928c;
+  }
+
+  header {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+    background: linear-gradient(to bottom, rgba(47,55,53,0.45), transparent);
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.15rem 0; gap: 1rem; flex-wrap: wrap;
+  }
+  .logo-mark {
+    font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em;
+    color: #fff;
+  }
+  .logo-mark span { color: #e8c98a; }
+  nav ul {
+    list-style: none; display: flex; flex-wrap: wrap; gap: 0.85rem 1.15rem;
+    font-size: 0.86rem; font-weight: 500;
+  }
+  nav a { color: rgba(255,255,255,0.9); }
+  nav a:hover { color: #e8c98a; }
+
+  /* Full-bleed hero, softer overlay */
+  .hero {
+    position: relative; min-height: 78vh;
+    display: grid; align-items: end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: #6a736c center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(105deg, rgba(55,64,61,0.72) 0%, rgba(55,64,61,0.38) 48%, rgba(55,64,61,0.18) 100%),
+      linear-gradient(0deg, rgba(55,64,61,0.55) 0%, rgba(55,64,61,0.08) 50%, rgba(55,64,61,0.2) 100%);
+  }
+  .hero-inner {
+    position: relative; z-index: 2; padding: 6.5rem 0 3.25rem;
+  }
+  .hero-wordmark {
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+    line-height: 1.02; letter-spacing: -0.03em;
+    color: #fff; margin-bottom: 1rem; max-width: 14ch;
+  }
+  .hero-wordmark em {
+    font-style: normal; color: #e8c98a; font-weight: 700;
+  }
+  .hero-lead {
+    max-width: 34rem; color: rgba(255,255,255,0.9); font-size: 1.05rem;
+    margin-bottom: 1.6rem;
+  }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.85rem 1.25rem; font-weight: 600; font-size: 0.9rem;
+    border: 1px solid transparent; border-radius: 2px;
+  }
+  .btn-brass {
+    background: var(--brass); color: #fff;
+  }
+  .btn-brass:hover { background: var(--brass-soft); color: #fff; }
+  .btn-ghost {
+    background: rgba(255,255,255,0.12); color: #fff;
+    border-color: rgba(255,255,255,0.45);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.22); color: #fff; }
+
+  section { padding: 4.5rem 0; }
+  .band-paper { background: var(--paper); }
+  .band-sage { background: var(--sage-soft); }
+  .band-mid {
+    background: #6f7a76;
+    color: #f7f5f0;
+  }
+  .band-mid .lede, .band-mid .store p { color: rgba(247,245,240,0.82); }
+  .band-mid .store {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .band-mid a:hover { color: #e8c98a; }
+
+  .mega {
+    font-weight: 700;
+    font-size: clamp(1.85rem, 3.8vw, 2.75rem);
+    line-height: 1.15; letter-spacing: -0.025em;
+    margin-bottom: 0.85rem; color: var(--slate-deep);
+  }
+  .band-mid .mega { color: #fff; }
+  .mega .num {
+    display: block; color: var(--brass); font-size: 0.42em;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 0.55rem;
+  }
+  .band-mid .mega .num { color: #e8c98a; }
+  .lede {
+    color: var(--muted); max-width: 38rem; font-size: 1.02rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .asymmetric {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: center;
+  }
+  .asymmetric.reverse { grid-template-columns: 0.9fr 1.1fr; }
+  .asymmetric.reverse .copy { order: 2; }
+  .asymmetric.reverse .visual { order: 1; }
+  .visual img {
+    width: 100%; height: 420px; object-fit: cover; display: block;
+    border-radius: 2px;
+  }
+  .visual.offset img { height: 480px; }
+  .visual .cap { margin-top: 0.5rem; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    grid-template-rows: 250px 200px;
+    gap: 0.85rem;
+  }
+  .product-grid article {
+    position: relative; overflow: hidden; background: #c9cfc7;
+    border-radius: 2px;
+  }
+  .product-grid article:first-child { grid-row: span 2; }
+  .product-grid img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .product-grid .label {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 1rem 0.95rem 0.9rem;
+    background: linear-gradient(transparent, rgba(44,51,49,0.72));
+    color: #fff; font-weight: 700; font-size: 1rem;
+  }
+  .product-grid .label small {
+    display: block; font-weight: 500; font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #e8c98a; margin-top: 0.2rem;
+  }
+
+  .mat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem;
+  }
+  .mat-card {
+    background: var(--paper); border-top: 3px solid var(--brass);
+    overflow: hidden;
+  }
+  .mat-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .mat-card .body { padding: 1.05rem 1rem 1.2rem; }
+  .mat-card h3 {
+    font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;
+    color: var(--slate-deep);
+  }
+  .mat-card p { color: var(--muted); font-size: 0.95rem; }
+
+  .store-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .store {
+    border: 1px solid var(--line); background: var(--paper);
+    padding: 1.45rem 1.3rem; border-radius: 2px;
+  }
+  .store strong {
+    display: block; font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 0.45rem; color: var(--slate-deep);
+  }
+  .band-mid .store strong { color: #fff; }
+  .store p { color: var(--muted); }
+
+  .custom-shell {
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 2rem; align-items: start;
+  }
+  .steps { display: grid; gap: 1rem; margin-top: 1.35rem; }
+  .step {
+    display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.8rem; align-items: start;
+  }
+  .step .n {
+    font-weight: 700; font-size: 1.25rem; color: var(--brass); line-height: 1.1;
+  }
+  .step strong { display: block; margin-bottom: 0.15rem; color: var(--slate-deep); }
+  .step p { color: var(--muted); font-size: 0.98rem; }
+  form {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 1.4rem; display: grid; gap: 0.9rem; border-radius: 2px;
+  }
+  label {
+    display: block; font-size: 0.74rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brass); font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  input, textarea, select {
+    width: 100%; background: #fff; color: var(--text);
+    border: 1px solid var(--line); padding: 0.8rem 0.85rem;
+    font: inherit; border-radius: 2px;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: 1px solid var(--brass); border-color: var(--brass);
+  }
+  textarea { min-height: 115px; resize: vertical; }
+  .form-note { color: #8b928c; font-size: 0.78rem; }
+
+  .care-list {
+    list-style: none; display: grid; gap: 0.7rem; max-width: 40rem;
+  }
+  .care-list li {
+    display: grid; grid-template-columns: 1.2rem 1fr; gap: 0.65rem;
+    color: var(--muted); font-size: 1.02rem;
+  }
+  .care-list li::before {
+    content: ""; width: 0.5rem; height: 0.5rem; margin-top: 0.55rem;
+    background: var(--brass); border-radius: 50%;
+  }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 2.5rem 0 2.1rem;
+    background: var(--paper);
+  }
+  .footer-grid {
+    display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    align-items: end;
+  }
+  .footer-brand {
+    font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em;
+    color: var(--slate-deep);
+  }
+  .footer-brand span { color: var(--brass); }
+  footer nav ul { margin-top: 0.9rem; }
+  footer nav a { color: var(--muted); }
+
+  @media (max-width: 860px) {
+    .hero { min-height: 72vh; }
+    .hero-inner { padding-top: 6rem; }
+    .asymmetric, .asymmetric.reverse, .custom-shell, .store-grid, .mat-row {
+      grid-template-columns: 1fr;
+    }
+    .asymmetric.reverse .copy, .asymmetric.reverse .visual { order: initial; }
+    .visual img, .visual.offset img { height: 260px; }
+    .product-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: 260px 210px 210px;
+    }
+    .product-grid article:first-child { grid-row: auto; }
+    nav ul { gap: 0.5rem 0.8rem; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div>
+      <div class="logo-mark">Papsdadee<span>-o</span></div>
+      <div class="note" style="margin-top:0.2rem;color:rgba(255,255,255,0.65);">Placeholder wordmark</div>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#artist">Meet the Artist</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#techniques">Techniques &amp; Materials</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#care">Caring for Your Piece</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('/assets/workshop.jpg');" role="img" aria-label="Workshop placeholder photo"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow" style="color:#e8c98a;">Handmade wooden pieces</p>
+      <h1 class="hero-wordmark">Papsdadee<em>-o</em></h1>
+      <p class="hero-lead">Workshop-made bread knives and wooden pieces, built one at a time. No online cart. Just the work, the wood, and a door for custom heirloom commissions.</p>
+      <div class="btn-row">
+        <a class="btn btn-brass" href="#custom">Ask about custom work</a>
+        <a class="btn btn-ghost" href="#products">See the pieces</a>
+      </div>
+      <p class="note" style="margin-top:1rem;color:rgba(255,255,255,0.65);">Placeholder hero photo</p>
+    </div>
+  </section>
+
+  <section class="band-paper" id="products">
+    <div class="wrap">
+      <h2 class="mega"><span class="num">01 / Products</span>Made for the bench and the table</h2>
+      <p class="lede">Bread knives and wooden kitchen pieces. Inventory stays with the two shops that sell the work, so the maker can keep an unhurried tempo.</p>
+      <div class="product-grid">
+        <article>
+          <img src="/assets/knives-set.jpg" alt="Wooden handled knives" />
+          <div class="label">Bread knives<small>Placeholder photo</small></div>
+        </article>
+        <article>
+          <img src="/assets/handmade.jpg" alt="Handmade wood piece" />
+          <div class="label">Handmade pieces<small>Placeholder photo</small></div>
+        </article>
+        <article>
+          <img src="/assets/cutting.jpg" alt="Wood in daily use" />
+          <div class="label">In daily use<small>Placeholder photo</small></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-sage" id="artist">
+    <div class="wrap asymmetric reverse">
+      <div class="copy">
+        <h2 class="mega"><span class="num">02 / Meet the Artist</span>One maker. Steady hands.</h2>
+        <p class="lede">[Artist name] works wood at a human pace. The goal is not volume. It is a solid piece for a good home, made carefully enough to last.</p>
+        <p style="color:var(--muted);">Portrait and a short studio note go here once you have them ready.</p>
+      </div>
+      <div class="visual offset">
+        <img src="/assets/craftsman.jpg" alt="Maker at work placeholder" />
+        <p class="cap note">Placeholder portrait</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-paper" id="techniques">
+    <div class="wrap">
+      <h2 class="mega"><span class="num">03 / Techniques &amp; Materials</span>Grain, tools, and patience</h2>
+      <p class="lede">Solid woods chosen for feel and strength. Simple shaping. A laser engraving when a piece needs to carry a short story.</p>
+      <div class="mat-row">
+        <article class="mat-card">
+          <img src="/assets/wood-grain.jpg" alt="Wood grain" />
+          <div class="body">
+            <h3>Chosen wood</h3>
+            <p>Grain first. Character that shows in the hand.</p>
+          </div>
+        </article>
+        <article class="mat-card">
+          <img src="/assets/chisel.jpg" alt="Workshop tools" />
+          <div class="body">
+            <h3>Shop tools</h3>
+            <p>Enough tool, not too much fuss.</p>
+          </div>
+        </article>
+        <article class="mat-card">
+          <img src="/assets/wood-tools.jpg" alt="Making process" />
+          <div class="body">
+            <h3>Workshop pace</h3>
+            <p>Made when there is time to make it well.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-mid" id="buy">
+    <div class="wrap">
+      <h2 class="mega"><span class="num">04 / Where to Buy</span>Two shops. No cart.</h2>
+      <p class="lede">Current pieces live on the shelves of the stores below. Online selling can wait.</p>
+      <div class="store-grid">
+        <div class="store">
+          <strong>[Store name 1]</strong>
+          <p>[City, State]<br>[Address or hours placeholder]</p>
+        </div>
+        <div class="store">
+          <strong>[Store name 2]</strong>
+          <p>[City, State]<br>[Address or hours placeholder]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-paper" id="custom">
+    <div class="wrap">
+      <h2 class="mega"><span class="num">05 / Custom</span>Wood with a family story</h2>
+      <p class="lede">Have a piece of Grandpa's apple tree, a dining table leg, or wood from a trip that still means something? It can become a bread knife for each person in the family, laser engraved with the short story of the wood.</p>
+      <div class="custom-shell">
+        <div>
+          <p style="color:var(--muted); margin-bottom:0.5rem;">One example: French oak brought home from a wood pile in the Loire valley, from an innkeeper named Jean Claude. Eight bread knives came from it, one for each child, plus Grandma. Each carries the story engraved in the wood.</p>
+          <div class="steps">
+            <div class="step">
+              <div class="n">01</div>
+              <div><strong>Share the wood's story</strong><p>Where it came from, why it matters, how many pieces you hope for.</p></div>
+            </div>
+            <div class="step">
+              <div class="n">02</div>
+              <div><strong>Shape the set</strong><p>Bread knives or other pieces, sized for the wood you send.</p></div>
+            </div>
+            <div class="step">
+              <div class="n">03</div>
+              <div><strong>Engrave the memory</strong><p>A short story laser engraved so the next generation still knows.</p></div>
+            </div>
+          </div>
+        </div>
+        <form onsubmit="return false;">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="wood">About the wood</label>
+            <textarea id="wood" name="wood" placeholder="Where it came from, why it matters, how many pieces you hope for..."></textarea>
+          </div>
+          <button class="btn btn-brass" type="submit" style="border:0;cursor:pointer;justify-self:start;">Send inquiry (mockup)</button>
+          <p class="form-note">Non-functional demo form</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-sage" id="care">
+    <div class="wrap">
+      <h2 class="mega"><span class="num">06 / Caring for Your Piece</span>Keep it simple</h2>
+      <ul class="care-list">
+        <li>Hand wash with mild soap and warm water.</li>
+        <li>Dry soon after washing. Do not soak.</li>
+        <li>Skip the dishwasher.</li>
+        <li>Rub on a thin coat of food-safe oil when the wood looks dry.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">Papsdadee<span>-o</span></div>
+      <p style="color:var(--muted); margin-top:0.5rem;">Handmade wooden pieces. Made at a human tempo.</p>
+      <p class="note" style="margin-top:0.65rem;">Concept B: Soft Workshop · placeholder brand assets</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#artist">Meet the Artist</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#techniques">Techniques &amp; Materials</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#care">Caring for Your Piece</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

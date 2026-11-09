@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Papsdadee-o | Handmade Wooden Pieces</title>
+<style>
+  :root {
+    --ink: #2b1d14;
+    --bark: #5c3d2e;
+    --clay: #8b5e3c;
+    --sand: #e8d9c4;
+    --cream: #f7f0e6;
+    --leaf: #6b7f4a;
+    --paper: #fffaf3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+  a { color: var(--bark); text-decoration: none; }
+  a:hover { color: var(--leaf); }
+  .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+  header {
+    background: var(--paper);
+    border-bottom: 1px solid #e0d0bc;
+    position: sticky; top: 0; z-index: 20;
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 0; gap: 1rem; flex-wrap: wrap;
+  }
+  .wordmark {
+    font-size: 1.65rem; letter-spacing: 0.04em; color: var(--bark);
+    font-weight: normal;
+  }
+  .wordmark small {
+    display: block; font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--clay); margin-top: 0.15rem;
+  }
+  .placeholder-note {
+    font-family: system-ui, sans-serif; font-size: 0.65rem;
+    color: #9a7f68; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  nav ul {
+    list-style: none; display: flex; flex-wrap: wrap; gap: 0.9rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  .hero {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem;
+    align-items: center; padding: 3.5rem 0 3rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.15;
+    color: var(--bark); font-weight: normal; margin-bottom: 1rem;
+  }
+  .hero p { font-size: 1.1rem; max-width: 34rem; margin-bottom: 1.5rem; }
+  .btn {
+    display: inline-block; background: var(--bark); color: var(--paper);
+    padding: 0.85rem 1.4rem; border-radius: 2px; font-size: 0.95rem;
+  }
+  .btn:hover { background: var(--leaf); color: var(--paper); }
+  .btn.ghost {
+    background: transparent; color: var(--bark);
+    border: 1px solid var(--bark); margin-left: 0.6rem;
+  }
+  .hero-art {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+  }
+  .hero-art img, .gallery img, .story-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    border-radius: 3px;
+  }
+  .hero-art .tall { grid-row: span 2; min-height: 360px; }
+  .hero-art .sq { min-height: 170px; }
+  .photo-label {
+    font-family: system-ui, sans-serif; font-size: 0.7rem;
+    color: #8a7260; margin-top: 0.35rem;
+  }
+  section { padding: 3rem 0; }
+  .section-title {
+    font-size: 1.8rem; color: var(--bark); font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+  .lede { max-width: 38rem; margin-bottom: 1.75rem; color: #4a372c; }
+  .gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .gallery figure { background: var(--paper); padding: 0.6rem; border: 1px solid #e5d6c3; }
+  .gallery img { height: 220px; }
+  .gallery figcaption { padding: 0.6rem 0.2rem 0.2rem; font-size: 0.95rem; }
+  .band {
+    background: var(--bark); color: var(--sand); padding: 3rem 0;
+  }
+  .band .section-title { color: var(--sand); }
+  .band .lede { color: #d8c4ad; }
+  .stores {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .store-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(232,217,196,0.25);
+    padding: 1.25rem; border-radius: 3px;
+  }
+  .custom {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+  }
+  .custom form {
+    background: var(--paper); border: 1px solid #e0d0bc; padding: 1.5rem;
+    display: grid; gap: 0.85rem;
+  }
+  label { font-size: 0.85rem; color: var(--bark); display: block; margin-bottom: 0.25rem; }
+  input, textarea, select {
+    width: 100%; padding: 0.7rem 0.75rem; border: 1px solid #d4c2ab;
+    background: #fff; font: inherit; color: var(--ink); border-radius: 2px;
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  .form-note {
+    font-family: system-ui, sans-serif; font-size: 0.75rem; color: #8a7260;
+  }
+  footer {
+    background: #23170f; color: #c9b39a; padding: 2.25rem 0;
+    font-size: 0.9rem;
+  }
+  footer .wordmark { color: var(--sand); font-size: 1.25rem; }
+  footer nav ul { margin-top: 1rem; }
+  footer a { color: #c9b39a; }
+  .footer-grid {
+    display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  }
+  @media (max-width: 800px) {
+    .hero, .custom, .stores, .gallery { grid-template-columns: 1fr; }
+    .hero-art .tall { min-height: 240px; grid-row: auto; }
+    .btn.ghost { margin-left: 0; margin-top: 0.5rem; display: inline-block; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div>
+      <div class="wordmark">Papsdadee-o <span class="placeholder-note">placeholder wordmark</span></div>
+      <small style="display:block;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#8b5e3c;margin-top:0.15rem;">Handmade wooden pieces</small>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#artist">Meet the Artist</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#techniques">Techniques &amp; Materials</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#care">Caring for Your Piece</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Wood you can hold. Stories you can pass down.</h1>
+      <p>Simple, handmade kitchen pieces made one at a time. No online shop for now. Just the work, the wood, and the two stores that carry it.</p>
+      <a class="btn" href="#custom">Ask about a custom piece</a>
+      <a class="btn ghost" href="#products">See the work</a>
+    </div>
+    <div class="hero-art">
+      <div class="tall">
+        <img src="/assets/knife-wood.jpg" alt="Handcrafted wooden kitchen piece" />
+        <p class="photo-label">Placeholder photo</p>
+      </div>
+      <div class="sq"><img src="/assets/wood-tools.jpg" alt="Woodworking tools" /></div>
+      <div class="sq"><img src="/assets/handmade.jpg" alt="Handmade wood detail" /></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="products">
+    <h2 class="section-title">Products</h2>
+    <p class="lede">Bread knives and wooden pieces made for daily use. Inventory stays with the shops, so the workshop can keep a steady, unhurried pace.</p>
+    <div class="gallery">
+      <figure>
+        <img src="/assets/knives-set.jpg" alt="Wooden handled knives" />
+        <figcaption>Bread knives<br><span class="photo-label">Placeholder photo</span></figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/utensils.jpg" alt="Wooden utensils" />
+        <figcaption>Kitchen pieces<br><span class="photo-label">Placeholder photo</span></figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/cutting.jpg" alt="Wood in the kitchen" />
+        <figcaption>Everyday wood<br><span class="photo-label">Placeholder photo</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap" id="artist">
+    <h2 class="section-title">Meet the Artist</h2>
+    <div class="custom" style="align-items:center;">
+      <div>
+        <p class="lede" style="margin-bottom:1rem;">[Artist name] works wood at a human tempo. The goal is not volume. It is a good piece for a good home, made carefully enough to last.</p>
+        <p>Photos and a short bio go here once you have them ready.</p>
+      </div>
+      <div class="story-photo">
+        <img src="/assets/craftsman.jpg" alt="Maker at work" style="height:280px;object-fit:cover;border-radius:3px;" />
+        <p class="photo-label">Placeholder photo</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="techniques">
+    <h2 class="section-title">Techniques &amp; Materials</h2>
+    <p class="lede">Solid woods chosen for grain, feel, and strength. Simple joinery. A laser engraving when a piece carries a story worth telling.</p>
+    <div class="gallery">
+      <figure>
+        <img src="/assets/wood-grain.jpg" alt="Wood grain" />
+        <figcaption>Grain first</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/chisel.jpg" alt="Hand tools" />
+        <figcaption>Hand tools</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/oak-plank.jpg" alt="Oak plank" />
+        <figcaption>Honest materials</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band" id="buy">
+    <div class="wrap">
+      <h2 class="section-title">Where to Buy</h2>
+      <p class="lede">Pieces are stocked at two local shops. No online inventory for now.</p>
+      <div class="stores">
+        <div class="store-card">
+          <strong>[Store name 1]</strong>
+          <p style="margin-top:0.4rem;">[City, State]<br>[Address or hours placeholder]</p>
+        </div>
+        <div class="store-card">
+          <strong>[Store name 2]</strong>
+          <p style="margin-top:0.4rem;">[City, State]<br>[Address or hours placeholder]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="custom">
+    <h2 class="section-title">Make something from wood you love</h2>
+    <p class="lede">Have a piece of Grandpa's apple tree, a dining table leg, or wood from a trip that still means something? It can become a bread knife for each person in the family, laser engraved with the short story of the wood.</p>
+    <div class="custom">
+      <div>
+        <p style="margin-bottom:1rem;">One example: French oak brought home from a wood pile in the Loire valley, from an innkeeper named Jean Claude. Eight bread knives came from it, one for each child, plus Grandma. Each carries the story engraved in the wood.</p>
+        <p>This form is a mockup for layout. It does not send yet.</p>
+      </div>
+      <form onsubmit="return false;">
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" placeholder="Jane Doe" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label for="wood">About the wood</label>
+          <textarea id="wood" name="wood" placeholder="Where it came from, why it matters, how many pieces you hope for..."></textarea>
+        </div>
+        <button class="btn" type="submit">Send inquiry (mockup)</button>
+        <p class="form-note">Non-functional demo form</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap" id="care" style="padding-top:1rem;">
+    <h2 class="section-title">Caring for Your Piece</h2>
+    <p class="lede">Hand wash. Dry soon after. A light coat of food-safe oil now and then keeps the wood happy. Avoid the dishwasher and long soaks.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="wordmark">Papsdadee-o</div>
+      <p style="margin-top:0.4rem;">Handmade wooden pieces. Made at a human tempo.</p>
+      <p class="placeholder-note" style="margin-top:0.6rem;">Concept A: Warm Rustic · placeholder brand assets</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#artist">Meet the Artist</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#techniques">Techniques &amp; Materials</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#care">Caring for Your Piece</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,345 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Papsdadee-o | Heirloom Story Concept</title>
+<meta name="robots" content="noindex" />
+<title>Papsdadee-o | Journal Keepsake Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #1c1917;
-    --warm: #7c4a2d;
-    --gold: #b08a5a;
-    --fog: #f3efe8;
-    --paper: #fffcf7;
-    --deep: #2f241c;
+    --parchment: #f2e8d5;
+    --page: #f7f0e2;
+    --dust: #5b7388;
+    --dust-deep: #3d5568;
+    --ink: #2a2a28;
+    --line: #d4c6ae;
+    --terra: #b56b4a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    font-family: "Libre Baskerville", Georgia, serif;
+    background:
+      radial-gradient(ellipse at top, #ebe1cd 0%, var(--parchment) 55%, #e4d8c0 100%);
     color: var(--ink);
-    background: var(--paper);
-    line-height: 1.65;
+    line-height: 1.7;
+    min-height: 100vh;
   }
-  a { color: var(--warm); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrap { width: min(1080px, 92vw); margin: 0 auto; }
-  header {
-    padding: 1.25rem 0 0.75rem;
-    border-bottom: 1px solid #e7ddd0;
-    background: var(--paper);
-    position: sticky; top: 0; z-index: 20;
+  a { color: var(--dust-deep); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--dust); }
+  .note {
+    font-family: system-ui, sans-serif; font-size: 0.68rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #9a8b74;
   }
-  .brand {
-    text-align: center; margin-bottom: 0.85rem;
+
+  .sheet {
+    width: min(720px, 92vw);
+    margin: 0 auto;
+    padding: 2.5rem 0 4rem;
   }
-  .brand h1 {
-    font-size: 2rem; font-weight: normal; letter-spacing: 0.08em;
-    color: var(--deep);
+
+  header.mast {
+    text-align: center;
+    padding: 1.5rem 0 2rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5rem;
   }
-  .brand .note {
-    font-family: system-ui, sans-serif; font-size: 0.65rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #9a8572;
-    margin-top: 0.25rem;
+  .script {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic; font-weight: 600;
+    font-size: clamp(2.6rem, 7vw, 3.8rem);
+    color: var(--dust-deep); letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .script span { color: var(--terra); }
+  .tagline {
+    margin-top: 0.55rem; color: #7a6d5a; font-size: 0.95rem;
+  }
+  nav {
+    margin-top: 1.35rem;
   }
   nav ul {
-    list-style: none; display: flex; justify-content: center;
-    flex-wrap: wrap; gap: 0.85rem 1.4rem; font-size: 0.95rem;
-    padding-bottom: 0.85rem;
+    list-style: none; display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.55rem 1.15rem; font-size: 0.86rem;
   }
-  .hero-story {
-    padding: 3.5rem 0 2rem;
-    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 2.5rem;
-    align-items: center;
+  nav a { color: var(--dust-deep); }
+
+  .intro {
+    text-align: center; margin-bottom: 2.75rem;
   }
-  .eyebrow {
-    font-family: system-ui, sans-serif; font-size: 0.72rem;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.75rem;
+  .intro h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.2; margin-bottom: 0.85rem; color: var(--ink);
   }
-  .hero-story h2 {
-    font-size: clamp(2rem, 4vw, 2.9rem); font-weight: normal;
-    line-height: 1.2; margin-bottom: 1rem; color: var(--deep);
+  .intro p { color: #5c5347; max-width: 34rem; margin: 0 auto 1.25rem; }
+
+  /* Scrapbook polaroids */
+  .scrap {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 1.25rem; margin: 2rem 0 3rem; perspective: 800px;
   }
-  .hero-story p { font-size: 1.08rem; margin-bottom: 1rem; }
-  .pull {
-    border-left: 3px solid var(--gold); padding-left: 1rem;
-    color: #4b3b30; font-style: italic; margin: 1.25rem 0;
+  .polaroid {
+    background: #fffef9; padding: 0.65rem 0.65rem 1.6rem;
+    box-shadow: 0 10px 24px rgba(42,42,40,0.12), 0 1px 0 rgba(0,0,0,0.04);
+    width: min(210px, 42vw);
+    transform: rotate(-3deg);
   }
-  .hero-photo img {
-    width: 100%; height: 460px; object-fit: cover; display: block;
-    border-radius: 4px;
+  .polaroid:nth-child(2) { transform: rotate(2.5deg); margin-top: 1.2rem; }
+  .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+  .polaroid img {
+    width: 100%; height: 160px; object-fit: cover; display: block;
+    filter: sepia(0.12) contrast(0.98);
   }
-  .photo-note {
-    font-family: system-ui, sans-serif; font-size: 0.7rem; color: #9a8572;
-    margin-top: 0.4rem;
+  .polaroid figcaption {
+    margin-top: 0.55rem; text-align: center;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic; font-size: 1.05rem; color: #5c5347;
   }
-  .btn {
-    display: inline-block; background: var(--deep); color: #f7f0e6;
-    padding: 0.85rem 1.35rem; border-radius: 999px; margin-top: 0.5rem;
-    font-family: system-ui, sans-serif; font-size: 0.9rem;
+
+  section.chapter {
+    margin: 2.75rem 0;
+    padding-top: 0.5rem;
   }
-  .btn:hover { background: var(--warm); text-decoration: none; color: #fff; }
-  section { padding: 3.25rem 0; }
-  .fog { background: var(--fog); }
-  h3 {
-    font-size: 1.7rem; font-weight: normal; color: var(--deep);
-    margin-bottom: 0.6rem;
+  .chapter h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.85rem; font-weight: 600; color: var(--dust-deep);
+    margin-bottom: 0.75rem; text-align: center;
   }
-  .lede { max-width: 40rem; margin-bottom: 1.5rem; }
-  .story-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+  .chapter .body { color: #4a4339; }
+
+  /* Letter style story */
+  .letter {
+    background: var(--page);
+    border: 1px solid var(--line);
+    padding: 1.75rem 1.6rem 1.9rem;
+    margin: 1.25rem 0 0.5rem;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    position: relative;
   }
-  .story-grid figure {
-    background: #fff; border: 1px solid #e7ddd0; padding: 0.55rem;
+  .letter::before {
+    content: ""; position: absolute; left: 1.4rem; right: 1.4rem; top: 0.85rem;
+    height: 1px; background: rgba(91,115,136,0.25);
   }
-  .story-grid img {
-    width: 100%; height: 210px; object-fit: cover; display: block;
+  .letter .date {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic; color: var(--dust); margin-bottom: 1rem; margin-top: 0.5rem;
   }
-  .story-grid figcaption {
-    padding: 0.7rem 0.3rem 0.35rem; font-size: 0.95rem;
+  .letter p { margin-bottom: 0.95rem; }
+  .letter .sign {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic; font-size: 1.25rem; color: var(--dust-deep);
+    margin-top: 1.25rem;
   }
+
+  .product-rail {
+    display: grid; gap: 1.25rem; margin-top: 1.25rem;
+  }
+  .product-row {
+    display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center;
+    background: rgba(255,255,255,0.45); border: 1px solid var(--line);
+    padding: 0.75rem;
+  }
+  .product-row img {
+    width: 140px; height: 110px; object-fit: cover; display: block;
+    transform: rotate(-1deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+  .product-row h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.35rem; font-weight: 600; margin-bottom: 0.2rem;
+  }
+  .product-row p { font-size: 0.92rem; color: #5c5347; }
+
+  /* Timeline */
   .timeline {
-    display: grid; gap: 1.1rem; max-width: 42rem;
+    margin: 1.5rem 0 0; border-left: 2px solid #b7c4ce;
+    padding-left: 1.25rem; display: grid; gap: 1.25rem;
   }
-  .step {
-    display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.85rem;
+  .t-item { position: relative; }
+  .t-item::before {
+    content: ""; position: absolute; left: -1.55rem; top: 0.45rem;
+    width: 0.65rem; height: 0.65rem; border-radius: 50%;
+    background: var(--terra); border: 2px solid var(--page);
   }
-  .num {
-    width: 2.2rem; height: 2.2rem; border-radius: 50%;
-    background: var(--deep); color: #f7f0e6; display: grid; place-items: center;
-    font-family: system-ui, sans-serif; font-size: 0.85rem;
+  .t-item strong {
+    display: block; font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.2rem; color: var(--dust-deep); margin-bottom: 0.15rem;
   }
-  .two-col {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
-  }
-  .two-col img {
-    width: 100%; height: 320px; object-fit: cover; border-radius: 4px; display: block;
-  }
+  .t-item p { color: #5c5347; font-size: 0.95rem; }
+
   .stores {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    display: grid; gap: 0.85rem; margin-top: 1rem;
   }
   .store {
-    background: #fff; border: 1px solid #e7ddd0; padding: 1.35rem;
+    border: 1px dashed var(--dust);
+    padding: 1rem 1.1rem; background: rgba(255,255,255,0.35);
   }
-  form {
-    background: #fff; border: 1px solid #e7ddd0; padding: 1.5rem;
-    display: grid; gap: 0.9rem; border-radius: 4px;
+  .store strong { color: var(--dust-deep); }
+
+  /* Handwritten card form */
+  .card-form {
+    background: #fffdf7;
+    border: 1px solid var(--line);
+    padding: 1.5rem 1.35rem 1.35rem;
+    margin-top: 1.25rem;
+    box-shadow: 6px 8px 0 rgba(61,85,104,0.08);
+    transform: rotate(0.4deg);
   }
+  .card-form .hello {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic; font-size: 1.4rem; color: var(--dust-deep);
+    margin-bottom: 1rem;
+  }
+  form { display: grid; gap: 0.85rem; }
   label {
-    display: block; font-family: system-ui, sans-serif; font-size: 0.78rem;
-    letter-spacing: 0.05em; text-transform: uppercase; color: #7a6757;
-    margin-bottom: 0.3rem;
+    display: block; font-family: system-ui, sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 0.25rem;
   }
-  input, textarea, select {
-    width: 100%; padding: 0.75rem; border: 1px solid #dccfbf;
-    background: var(--paper); font: inherit; border-radius: 3px;
+  input, textarea {
+    width: 100%; border: 0; border-bottom: 1px solid #cbbda8;
+    background: transparent; padding: 0.55rem 0.1rem; font: inherit;
+    color: var(--ink);
   }
-  textarea { min-height: 120px; resize: vertical; }
-  .form-note {
-    font-family: system-ui, sans-serif; font-size: 0.75rem; color: #9a8572;
+  textarea { min-height: 100px; resize: vertical; border: 1px solid #cbbda8; padding: 0.65rem; }
+  .btn {
+    display: inline-block; background: var(--dust-deep); color: #f7f0e2;
+    padding: 0.75rem 1.2rem; font-family: system-ui, sans-serif;
+    font-size: 0.88rem; font-weight: 600; border: 0; cursor: pointer;
+    justify-self: start;
   }
-  .care-list {
-    list-style: none; display: grid; gap: 0.6rem; max-width: 36rem;
+  .btn:hover { background: var(--dust); }
+
+  .care {
+    background: rgba(91,115,136,0.08);
+    border-left: 3px solid var(--dust);
+    padding: 1rem 1.1rem; margin-top: 1rem;
   }
-  .care-list li {
-    padding-left: 1.2rem; position: relative;
-  }
-  .care-list li::before {
-    content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%;
-    background: var(--gold); position: absolute; left: 0; top: 0.55rem;
-  }
+  .care ul { list-style: none; display: grid; gap: 0.4rem; color: #5c5347; }
+  .care li::before { content: "· "; color: var(--terra); font-weight: 700; }
+
   footer {
-    background: var(--deep); color: #d6c4b0; padding: 2.5rem 0;
-    text-align: center;
+    text-align: center; margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--line); color: #8a7d6a; font-size: 0.88rem;
   }
-  footer .brand h1 { color: #f7f0e6; font-size: 1.4rem; }
-  footer nav ul { margin-top: 1rem; }
-  footer a { color: #d6c4b0; }
-  @media (max-width: 800px) {
-    .hero-story, .story-grid, .two-col, .stores { grid-template-columns: 1fr; }
-    .hero-photo img { height: 280px; }
+  footer nav { margin-top: 0.75rem; }
+
+  @media (max-width: 560px) {
+    .product-row { grid-template-columns: 1fr; }
+    .product-row img { width: 100%; height: 180px; }
+    .polaroid { width: min(160px, 44vw); }
+    .polaroid img { height: 120px; }
   }
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="brand">
-      <h1>Papsdadee-o</h1>
-      <p class="note">Placeholder wordmark · handmade wooden pieces</p>
-    </div>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="#artist">Meet the Artist</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#techniques">Techniques &amp; Materials</a></li>
-        <li><a href="#buy">Where to Buy</a></li>
-        <li><a href="#care">Caring for Your Piece</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <div class="sheet">
+    <header class="mast">
+      <div class="script">Papsdadee<span>-o</span></div>
+      <p class="tagline">Handmade wooden pieces, kept close</p>
+      <p class="note" style="margin-top:0.35rem;">Placeholder wordmark</p>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#artist">Meet the Artist</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#techniques">Techniques &amp; Materials</a></li>
+          <li><a href="#buy">Where to Buy</a></li>
+          <li><a href="#care">Caring for Your Piece</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<main>
-  <section class="wrap hero-story">
-    <div>
-      <p class="eyebrow">A story in the wood</p>
-      <h2>From a Loire valley wood pile to eight family bread knives</h2>
-      <p>A piece of French oak came home from an innkeeper named Jean Claude. From that wood: eight bread knives, one for each child, plus Grandma. Each knife carries a laser engraving of the story.</p>
-      <p class="pull">That is the heart of Papsdadee-o. Wood with a past, made into something a family can use and pass on.</p>
-      <a class="btn" href="#custom">Start a custom heirloom piece</a>
+    <div class="intro">
+      <h1>A little book of wood, work, and family stories</h1>
+      <p>This homepage is meant to feel like a keepsake journal. No shop cart. Just the maker, the pieces, and a quiet invitation to turn treasured wood into something a family can hold.</p>
     </div>
-    <div class="hero-photo">
-      <img src="/assets/oak-plank.jpg" alt="Wood that carries a story" />
-      <p class="photo-note">Placeholder photo</p>
-    </div>
-  </section>
 
-  <section class="fog" id="products">
-    <div class="wrap">
-      <p class="eyebrow">Products</p>
-      <h3>Pieces for the kitchen, made one at a time</h3>
-      <p class="lede">No online store for inventory. The work supplies two local shops, at a pace that leaves room for care.</p>
-      <div class="story-grid">
-        <figure>
+    <div class="scrap" aria-label="Placeholder scrapbook photos">
+      <figure class="polaroid">
+        <img src="/assets/oak.jpg" alt="Oak wood" />
+        <figcaption>French oak</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <img src="/assets/bread.jpg" alt="Bread" />
+        <figcaption>At the table</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <img src="/assets/knife1.jpg" alt="Wooden knife" />
+        <figcaption>A finished knife</figcaption>
+      </figure>
+    </div>
+
+    <section class="chapter" id="story">
+      <h2>A letter from the Loire</h2>
+      <div class="letter">
+        <p class="date">On a piece of French oak</p>
+        <p>I brought home a piece of French oak from a wood pile in the Loire valley, from an innkeeper named Jean Claude. From that wood I made eight bread knives, one for each of my children, plus Grandma.</p>
+        <p>Each knife has a laser engraving of this story about the wood. That is the heart of the custom work I hope to do: take wood a family holds near and dear, and turn it into pieces they can use and pass on.</p>
+        <p class="sign">With care,<br>the maker</p>
+      </div>
+      <p class="note">Story from the client brief · photos are placeholders</p>
+    </section>
+
+    <section class="chapter" id="products">
+      <h2>Products</h2>
+      <p class="body">Bread knives and wooden kitchen pieces, made one at a time. Inventory stays with the two shops that sell the work.</p>
+      <div class="product-rail">
+        <article class="product-row">
           <img src="/assets/knives-set.jpg" alt="Bread knives" />
-          <figcaption>Bread knives<br><span class="photo-note">Placeholder</span></figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/utensils.jpg" alt="Wooden utensils" />
-          <figcaption>Everyday pieces<br><span class="photo-note">Placeholder</span></figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/loaf.jpg" alt="Bread on the table" />
-          <figcaption>Made to be used<br><span class="photo-note">Placeholder</span></figcaption>
-        </figure>
+          <div>
+            <h3>Bread knives</h3>
+            <p>For daily loaves and family tables.<br><span class="note">Placeholder photo</span></p>
+          </div>
+        </article>
+        <article class="product-row">
+          <img src="/assets/hands.jpg" alt="Handmade wood" />
+          <div>
+            <h3>Handmade pieces</h3>
+            <p>Simple forms, honest grain.<br><span class="note">Placeholder photo</span></p>
+          </div>
+        </article>
+        <article class="product-row">
+          <img src="/assets/loaf.jpg" alt="In use" />
+          <div>
+            <h3>Made to be used</h3>
+            <p>Not for a shelf alone.<br><span class="note">Placeholder photo</span></p>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="wrap" id="custom">
-    <p class="eyebrow">Custom commissions</p>
-    <h3>Make something from wood your family holds dear</h3>
-    <p class="lede">Part of Grandpa's apple tree. A leg from the dining table that hosted years of dinners. Wood from a trip that still means something. It can become a bread knife for each person you love, engraved with the short story of the wood.</p>
-    <div class="two-col">
-      <div>
-        <div class="timeline">
-          <div class="step"><div class="num">1</div><div><strong>Share the wood's story</strong><br>Where it came from, why it matters, how many pieces you hope for.</div></div>
-          <div class="step"><div class="num">2</div><div><strong>Shape the set</strong><br>Bread knives or other pieces, sized for the wood you send.</div></div>
-          <div class="step"><div class="num">3</div><div><strong>Engrave the memory</strong><br>A short story laser engraved so the next generation still knows.</div></div>
+    <section class="chapter" id="artist">
+      <h2>Meet the Artist</h2>
+      <p class="body">[Artist name] makes what there is time to make well. A short bio and studio portrait go here. For now, this page keeps the focus on the wood and the stories it carries.</p>
+    </section>
+
+    <section class="chapter" id="techniques">
+      <h2>Techniques &amp; Materials</h2>
+      <p class="body">Solid woods chosen for feel and strength. Careful shaping. Laser engraving when a piece needs words as well as grain. Grandpa's apple tree, a table leg from years of dinners, wood from a trip that still means something: all welcome for custom work.</p>
+    </section>
+
+    <section class="chapter" id="custom">
+      <h2>How a custom piece is made</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <strong>1. Share the wood's story</strong>
+          <p>Where it came from, why it matters, how many pieces you hope for.</p>
         </div>
-        <p style="margin-top:1.25rem;">Online selling can come later. For now, this is a door for custom work.</p>
+        <div class="t-item">
+          <strong>2. Shape the set</strong>
+          <p>Bread knives or other pieces, sized for the wood you send.</p>
+        </div>
+        <div class="t-item">
+          <strong>3. Engrave the memory</strong>
+          <p>A short story laser engraved so the next generation still knows.</p>
+        </div>
       </div>
-      <form onsubmit="return false;">
-        <div>
-          <label for="name">Your name</label>
-          <input id="name" placeholder="Jane Doe" />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="you@example.com" />
-        </div>
-        <div>
-          <label for="pieces">How many pieces?</label>
-          <select id="pieces">
-            <option>Not sure yet</option>
-            <option>1 to 3</option>
-            <option>4 to 8</option>
-            <option>More than 8</option>
-          </select>
-        </div>
-        <div>
-          <label for="story">The wood and the story</label>
-          <textarea id="story" placeholder="Tell me about the wood, the people, and what you hope to make..."></textarea>
-        </div>
-        <button class="btn" type="submit" style="border:0;cursor:pointer;justify-self:start;">Send inquiry (mockup)</button>
-        <p class="form-note">Non-functional demo form for layout only</p>
-      </form>
-    </div>
-  </section>
 
-  <section class="fog" id="artist">
-    <div class="wrap two-col" style="align-items:center;">
-      <div>
-        <img src="/assets/craftsman.jpg" alt="Meet the artist placeholder" />
-        <p class="photo-note">Placeholder portrait</p>
+      <div class="card-form">
+        <p class="hello">A note for the maker</p>
+        <form onsubmit="return false;">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="wood">About the wood</label>
+            <textarea id="wood" placeholder="Tell the story..."></textarea>
+          </div>
+          <button class="btn" type="submit">Send inquiry (mockup)</button>
+          <p class="note">Non-functional demo form</p>
+        </form>
       </div>
-      <div>
-        <p class="eyebrow">Meet the Artist</p>
-        <h3>A maker who keeps life simple</h3>
-        <p class="lede">[Artist name] makes wooden pieces at a human tempo. Inventory stays with the shops. Custom work is welcome when the wood already holds a story.</p>
-        <p>Full bio and studio photos go here.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="wrap" id="techniques">
-    <p class="eyebrow">Techniques &amp; Materials</p>
-    <h3>Honest wood. Clear craft.</h3>
-    <p class="lede">Solid woods, careful shaping, and laser engraving when a piece needs words as well as grain.</p>
-    <div class="story-grid">
-      <figure>
-        <img src="/assets/wood-grain.jpg" alt="Grain" />
-        <figcaption>Grain and character</figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/chisel.jpg" alt="Tools" />
-        <figcaption>Hand work</figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/oak-plank.jpg" alt="Oak" />
-        <figcaption>Materials that last</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="fog" id="buy">
-    <div class="wrap">
-      <p class="eyebrow">Where to Buy</p>
-      <h3>Find the work in two shops</h3>
-      <p class="lede">Current pieces live on the shelves of the stores below.</p>
+    <section class="chapter" id="buy">
+      <h2>Where to Buy</h2>
+      <p class="body">Find current pieces at these two shops. Online selling can wait.</p>
       <div class="stores">
-        <div class="store">
-          <strong>[Store name 1]</strong>
-          <p style="margin-top:0.4rem;">[City, State]<br>[Address / hours placeholder]</p>
-        </div>
-        <div class="store">
-          <strong>[Store name 2]</strong>
-          <p style="margin-top:0.4rem;">[City, State]<br>[Address / hours placeholder]</p>
-        </div>
+        <div class="store"><strong>[Store name 1]</strong><br>[City, State]<br>[Address or hours placeholder]</div>
+        <div class="store"><strong>[Store name 2]</strong><br>[City, State]<br>[Address or hours placeholder]</div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="wrap" id="care">
-    <p class="eyebrow">Caring for Your Piece</p>
-    <h3>A little care goes a long way</h3>
-    <ul class="care-list">
-      <li>Hand wash with mild soap and warm water.</li>
-      <li>Dry soon after washing. Do not soak.</li>
-      <li>Skip the dishwasher.</li>
-      <li>Rub on a thin coat of food-safe oil when the wood looks dry.</li>
-    </ul>
-  </section>
-</main>
+    <section class="chapter" id="care">
+      <h2>Caring for Your Piece</h2>
+      <div class="care">
+        <ul>
+          <li>Hand wash with mild soap and warm water.</li>
+          <li>Dry soon after washing. Do not soak.</li>
+          <li>Skip the dishwasher.</li>
+          <li>Rub on a thin coat of food-safe oil when the wood looks dry.</li>
+        </ul>
+      </div>
+    </section>
 
-<footer>
-  <div class="wrap">
-    <div class="brand">
-      <h1>Papsdadee-o</h1>
-      <p class="note" style="color:#b9a58f;">Concept C: Heirloom Story · placeholder brand assets</p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#artist">Meet the Artist</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#techniques">Techniques &amp; Materials</a></li>
-        <li><a href="#buy">Where to Buy</a></li>
-        <li><a href="#care">Caring for Your Piece</a></li>
-      </ul>
-    </nav>
+    <footer>
+      <div class="script" style="font-size:1.6rem;">Papsdadee<span>-o</span></div>
+      <p style="margin-top:0.4rem;">Concept C: Journal Keepsake · placeholder brand assets</p>
+      <nav>
+        <ul>
+          <li><a href="#artist">Meet the Artist</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#techniques">Techniques &amp; Materials</a></li>
+          <li><a href="#buy">Where to Buy</a></li>
+          <li><a href="#care">Caring for Your Piece</a></li>
+        </ul>
+      </nav>
+    </footer>
   </div>
-</footer>
 </body>
 </html>
